@@ -74,7 +74,7 @@ router.get('/profile', isLoggedIn, (req,res,next)=>{
     //tweets de los que sigues
     User.findById(req.user._id)
     .then(user=>{
-        return Tweet.find({user:{$in:user.following}}).populate('user')
+        return Tweet.find({user:{$in:user.following}}).sort('-created_at').populate('user')
     })  
     .then(tweets=>{
     req.user.text = "Kiubo?"
