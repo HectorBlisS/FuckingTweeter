@@ -51,13 +51,18 @@ app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 app.locals.title = 'Express - Generated with IronGenerator';
 
 //session
+// app.use(session({
+//   secret: 'bliss',
+//   cookie: {maxAge:60000},
+//   store:new MongoStore({
+//     mongooseConnection:mongoose.connection,
+//     ttl:24*60*60
+//   })
+// }));
 app.use(session({
-  secret: 'bliss',
-  cookie: {maxAge:60000},
-  store:new MongoStore({
-    mongooseConnection:mongoose.connection,
-    ttl:24*60*60
-  })
+  secret: "bliss",
+  resave: true,
+  saveUninitialized: true
 }));
 
 //passport
