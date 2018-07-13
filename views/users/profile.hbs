@@ -2,6 +2,7 @@
     <div class="cover" style="background-image:url('{{cover}}')" >
         <figure>
             <img id="photo" src="{{photoURL}}" alt="">
+            <h1>{{username}}</h1>
         </figure>
     </div>
 </section>
@@ -40,7 +41,7 @@
             <div>
                 {{tweet.created_at}}
                 <p>
-                    {{tweet.text}}
+                   {{tweet.user.username}}- <img width="50" src="{{tweet.user.photoURL}}" alt=""> {{tweet.text}}
                 </p>
             </div>
         {{/each}}

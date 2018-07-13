@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const User = require('../models/User');
 const uploadCloud = require('../helpers/cloudinary');
+const Tweet = require('../models/Tweet');
 
 function isLoggedIn(req,res,next){
     if(req.isAuthenticated()) return next();
@@ -70,11 +71,15 @@ router.post('/profile', isLoggedIn, uploadCloud.single('foto'), (req, res, next)
 });
 
 router.get('/profile', isLoggedIn, (req,res,next)=>{
+    //tweets de los que sigues
     User.findById(req.user._id)
-    .populate('tweets')
     .then(user=>{
-        user.text = "Kiubo?"
-        res.render('users/profile', user)
+        return Tweet.find({user:{$in:user.following}}).populate('user')
+    })  
+    .then(tweets=>{
+    req.user.text = "Kiubo?"
+    req.user.tweets = tweets;
+    res.render('users/profile', req.user);
     })
     .catch(e=>next(e))
     
