@@ -9,7 +9,7 @@
     <article>
         <div>
             <h4>Tweets</h4>
-            <h3>56</h3>
+            <h3>{{{count tweets}}}</h3>
         </div>
         <div>
             <h4>Siguiendo</h4>
@@ -22,6 +22,11 @@
         <div>
             <h4>Me guta</h4>
             <h3>56</h3>
+        </div>
+        <div>
+            <button id="follow">
+                {{{checkIfFollow _id loggedUser}}}
+            </button>
         </div>
     </article>
 </section>
@@ -80,6 +85,10 @@
 <input onchange="submitForm()" name="foto" id="file" style="display:none" type="file">
 </form>
 
+
+<form method="post" id="doFollow" action="/follow/{{_id}}">
+</form>
+
 <script>
     document.getElementById('photo').addEventListener('click', function(){
         document.getElementById('file').click();
@@ -88,6 +97,15 @@
     function submitForm(e){
        document.getElementById('form').submit();
     }
+</script>
+
+
+<script>
+
+    document.getElementById('follow').addEventListener('click', function(){
+        document.getElementById('doFollow').submit();
+    })
+
 </script>
 
 

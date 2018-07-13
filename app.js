@@ -11,6 +11,17 @@ const path         = require('path');
 const session      =  require('express-session');
 const MongoStore = require('connect-mongo')(session);
 
+//helpers
+hbs.registerHelper('count', function(array){
+  return array.length;
+});
+
+hbs.registerHelper('checkIfFollow', function(id, loggedUser){
+  const foundId = loggedUser.following.find(ids=>ids === id);
+  if(foundId) return "Following"
+  else return "Follow"
+})
+
 mongoose.Promise = Promise;
 mongoose
   .connect(process.env.DB, {useMongoClient: true})

@@ -1,0 +1,14 @@
+<form action="/users" method="post">
+    <input placeholder="A quien buscas?" name="username" type="text">
+    <input value="buscar" type="submit">
+</form>
+
+<section>   
+
+{{#each users as | user |}}
+    <a href="/users/{{user._id}}">
+    <h2>{{user.username}} - <img width="40" src="{{user.photoURL}}" alt=""></h2>
+    </a>
+{{/each}}
+
+</section>

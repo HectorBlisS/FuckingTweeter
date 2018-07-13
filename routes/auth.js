@@ -55,6 +55,7 @@ router.get('/login', isAuth, (req,res,next)=>{
 
 router.post('/login', passport.authenticate('local'), (req,res,next)=>{
     if(req.body.next) res.redirect(req.body.next);
+    req.app.locals.loggedUser = req.user;
     res.redirect('/profile')
 });
 
