@@ -1,0 +1,19 @@
+<h1>Signup</h1>
+<p style="color:red">
+    {{#if err}}{{err}}{{/if}}
+</p>
+<form validated action="/signup" method="post">
+    <p>
+        <input value="{{username}}" required placeholder="Tu nombre de usuario" name="username" type="text">
+    </p>
+        <p>
+        <input value="{{email}}" required placeholder="Tu correo de usuario" name="email" type="email">
+    </p>
+        <p>
+        <input value="{{password}}" required placeholder="Tu password de usuario" name="password" type="password">
+    </p>
+        <p>
+        <input value="{{password2}}" required placeholder="repite" name="password2" type="password">
+    </p>
+    <input type="submit">
+</form>

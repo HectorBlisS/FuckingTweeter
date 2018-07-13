@@ -1,0 +1,75 @@
+<section>
+    <div class="cover" style="background-image:url('{{cover}}')" >
+        <figure>
+            <img src="{{photoURL}}" alt="">
+        </figure>
+    </div>
+</section>
+<section class="barra">
+    <article>
+        <div>
+            <h4>Tweets</h4>
+            <h3>56</h3>
+        </div>
+        <div>
+            <h4>Siguiendo</h4>
+            <h3>56</h3>
+        </div>
+        <div>
+            <h4>Seguidores</h4>
+            <h3>56</h3>
+        </div>
+        <div>
+            <h4>Me guta</h4>
+            <h3>56</h3>
+        </div>
+    </article>
+</section>
+
+<section class="cuerpo">
+    <article>
+        tus cosas
+    </article>
+    <article>
+        {{#each tweets as |tweet|}}
+            <div>
+                {{tweet.created_at}}
+                <p>
+                    {{tweet.text}}
+                </p>
+            </div>
+        {{/each}}
+    </article>
+</section>
+
+<button id="tweetear" class="open-modal">Twittear</button>
+
+
+
+
+
+{{!-- modal --}}
+<section id="overlay" class="overlay">
+<div class="modal">
+    <form action="/tweets/new" method="post">
+        <img width="30" src="{{photoURL}}" alt="">
+        <textarea placeholder="Qué esta pasando?" name="text" id="" cols="30" rows="10"></textarea>
+        <br/>
+        <input value="Twittear" type="submit">
+    </form>
+</div>
+</section>
+
+
+<script>
+
+    var button = document.getElementById('tweetear');
+    button.addEventListener('click', function(){
+        var overlay = document.getElementById('overlay');
+         overlay.style = 'display:inherit'
+        //overlay.addEventListener('click', function(){
+          //  overlay.style = 'display:none'
+        //})
+  })
+
+</script>

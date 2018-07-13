@@ -1,0 +1,12 @@
+<h1>Login</h1>
+
+<form validated action="/login" method="post">
+        <p>
+        <input required placeholder="Tu correo de usuario" name="email" type="email">
+    </p>
+        <p>
+        <input required placeholder="Tu password de usuario" name="password" type="password">
+    </p>
+    <input name="next" value="{{next}}" type="hidden">
+    <input type="submit">
+</form>
