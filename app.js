@@ -9,6 +9,7 @@ const mongoose     = require('mongoose');
 const logger       = require('morgan');
 const path         = require('path');
 const session      =  require('express-session');
+const MongoStore = require('connect-mongo')(session);
 
 mongoose.Promise = Promise;
 mongoose
@@ -52,8 +53,11 @@ app.locals.title = 'Express - Generated with IronGenerator';
 //session
 app.use(session({
   secret: 'bliss',
-  resave: true,
-  saveUninitialized: true
+  cookie: {maxAge:60000},
+  store:new MongoStore({
+    mongooseConnection:mongoose.connection,
+    ttl:24*60*60
+  })
 }));
 
 //passport
