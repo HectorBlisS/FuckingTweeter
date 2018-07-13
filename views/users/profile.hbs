@@ -1,7 +1,7 @@
 <section>
     <div class="cover" style="background-image:url('{{cover}}')" >
         <figure>
-            <img src="{{photoURL}}" alt="">
+            <img id="photo" src="{{photoURL}}" alt="">
         </figure>
     </div>
 </section>
@@ -61,6 +61,8 @@
 </section>
 
 
+
+
 <script>
 
     var button = document.getElementById('tweetear');
@@ -73,3 +75,19 @@
   })
 
 </script>
+
+<form id="form" action="/profile" method="post" enctype="multipart/form-data">
+<input onchange="submitForm()" name="foto" id="file" style="display:none" type="file">
+</form>
+
+<script>
+    document.getElementById('photo').addEventListener('click', function(){
+        document.getElementById('file').click();
+    });
+
+    function submitForm(e){
+       document.getElementById('form').submit();
+    }
+</script>
+
+
