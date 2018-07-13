@@ -17,9 +17,17 @@ hbs.registerHelper('count', function(array){
 });
 
 hbs.registerHelper('checkIfFollow', function(id, loggedUser){
-  const foundId = loggedUser.following.find(ids=>ids === id);
-  if(foundId) return "Following"
-  else return "Follow"
+  const elId = loggedUser.following.find(i => i == id.toString());
+  console.log("el logueado: ",loggedUser.following)
+  console.log("el perfil ", new String(id))
+  if(elId) {
+    console.log('following')
+    return "Following"
+  }
+  else {
+    console.log('follow')
+    return "Follow"
+  }
 })
 
 mongoose.Promise = Promise;
