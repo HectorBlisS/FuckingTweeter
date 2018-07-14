@@ -104,7 +104,7 @@ router.get('/profile', isLoggedIn, (req,res,next)=>{
     })
     .then(followers=>{
         req.user.followers = followers;
-        return res.send(req.user);
+        //return res.send(req.user);
         res.render('users/profile', req.user);
     })
     .catch(e=>next(e))
