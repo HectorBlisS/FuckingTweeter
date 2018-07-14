@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 const tweetSchema = new Schema({
     user:{
         type: Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'User',
+        childPath: "tweets"
     },
     text:{
         type: String,

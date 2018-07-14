@@ -78,10 +78,25 @@ app.locals.title = 'Express - Generated with IronGenerator';
 //     ttl:24*60*60
 //   })
 // }));
+
+// app.use(session({
+//   secret: "bliss",
+//   resave: true,
+//   saveUninitialized: true
+// }));
+
+
 app.use(session({
-  secret: "bliss",
-  resave: true,
-  saveUninitialized: true
+  store: new MongoStore({
+    mongooseConnection:mongoose.connection,
+    ttl:24*60*60
+  }),
+  secret: 'bliss',
+  saveUninitialized: true,
+  resave: false,
+  // cookie: {
+  //     path: "/",
+  // }
 }));
 
 //passport
